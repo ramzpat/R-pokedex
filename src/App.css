@@ -14,14 +14,22 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;
+  height: calc(100vh - env(safe-area-inset-bottom));
+  /* height: -webkit-fill-available; */
+  /* height: calc(100% - env(safe-area-inset-bottom)); */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+@media screen {
+  .App-header {
+    height: -webkit-fill-available;
+  }
 }
 
 .App-link {
@@ -35,4 +43,82 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* Mobile design */
+#search_box {
+  font-size: 20px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #61dafb;
+
+  position:absolute;
+  left:0;
+  bottom:env(safe-area-inset-bottom);
+  transform: translateX(100vw) translateX(-100px) translateY(-20px);
+  border-radius: 10px;
+  transition:all 0s;
+  cursor: pointer;
+}
+
+#pokemon_list {
+  width: 100%;
+  height: calc(100vh - env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: auto;
+  overflow-y: auto;
+  transition:all .2s;
+}
+
+.pokemon_brief_info {
+  /* width: 100%; */
+  min-height: 100px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 24px;
+
+  background-color:gray;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 700px) {
+  /* For desktop: */
+  #search_box {
+    position:absolute;
+    left:0;
+    bottom:env(safe-area-inset-bottom);
+    transform: translate(0, -100vh) translateY(40px); 
+    height: 40px;
+    min-height: 40px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
+
+    transition:all 0s;
+    cursor:initial;
+  }
+
+  #pokemon_list {
+    width: 100%;
+    position: relative;
+    /* height: 100%; */
+    transform: translate(0, 40px); 
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: auto;
+    overflow-y: auto;
+  }
+
 }
