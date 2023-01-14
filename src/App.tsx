@@ -1,7 +1,6 @@
 import React, {useState, useEffect}from 'react';
 import './App.css';
 import Pokedex from 'pokedex-promise-v2';
-import Div100vh from 'react-div-100vh';
 const P = new Pokedex();
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
   useEffect(() => {
     const getPokemons = async () => {
       let _pkm_list:pokemon_info_t[] = []
-      let n = 50;
+      let n = 60;
       for(let i=1; i<=n;i++) {
         _pkm_list.push({name:"loading"})
         let res = await P.getPokemonByName(i);
